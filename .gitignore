@@ -1,0 +1,12 @@
+build/
+managed_components/
+sdkconfig
+private_wifi_credentials.h
+.env
+.env.*
+*.bin
+*.elf
+*.log
+data/raw/
+.DS_Store
+Thumbs.db
