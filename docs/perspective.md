@@ -1,47 +1,69 @@
-# 我的技术理解 / My perspective
+# 我的探索与技术见解 / My exploration and technical perspective
 
 [中文首页](../README.md) · [English home](../README.en.md)
 
-## 中文
+## 从什么问题开始
 
-### 我为什么学习 CSI
+我最初想知道：在一个有发射源和接收器的空间中，物体运动会怎样反映到接收数据里？进一步说，大幅运动与小幅运动能不能有可辨别的差异？我不满足于“收到多少条数据”的报告，因为它只能说明链路在工作，不能说明这些数据意味着什么。
 
-我感兴趣的是：一个原本用于通信的系统，为什么还能帮助我们感知环境？把发射、传播和接收连起来看，让我更容易理解无线通信与环境之间的联系。这也是本仓库想表达的核心见解。
+我把 CSI 从摄像头联动项目中拆出，用独立的 ESP32-S3 接收固件观察连续数据。10、20、30 秒窗口给了我观察变化的机会，随后我在实际操作中改变了位置、接收器方向，并尝试声音和外界噪声。
 
-### 我如何理解“检测运动”
+## 哪些观察影响了我的判断
 
-我的理解分成三步：接收到数据；观察到数据变化；通过对照实验判断变化是否与运动有关。这三步不能合并成“收到 CSI 就能检测物体”。丢包、设备摆放或背景环境变化，都需要在解释中考虑。
+靠近发射源时，波动明显小于靠近接收器时；在接收器正面，响应明显超过反面。声音及本次尝试的外界噪声则几乎没有明显影响。
 
-因此，我会先使用“观察到与运动一致的变化”这样的表述。只有当重复实验提供支持时，才描述特定条件下的候选运动判断。物体类别、精确位置以及完全静止的物体是否存在，不是这个简单实验能直接回答的问题。
+这些现象对我的意义在于：显示值不仅取决于动作本身。位置和方向会影响结果，所以一个更大的波动无法直接告诉我“动作更大了”。同样，我看到了远近位置的响应差异，但这不等于我能在未知位置时，反过来从一段信号准确判断它来自哪一端。
 
-### 我为什么以接收端为中心
+我还区分了两种说法：“本次没有看到声音影响”，与“外界干扰不会影响 CSI”。前者是我的观察，后者超出了这次测试能说明的范围。
 
-发射器提供流量，接收端是我理解数据的入口。我想讲清楚数据从哪里来、如何记录、如何比较，以及什么情况下不应该下结论。这样的范围让我能够把技术讲明白，也为以后看更复杂的系统建立基础。
+## 我目前仍保持的基本判断
 
-### 我怎样表达自己的见解
+我认为这项技术有一定可行性，适合继续考虑在条件明确的对象或场景中观察运动、振动及状态变化。但面对影响因素很多的空间，当前装置还不足以详细、准确地同时分辨位置、动作大小和其他多种特征。
 
-每篇记录都区分：我原先的理解、实际观察、我对现象的解释、尚未回答的问题。出现不符合预期的结果也值得保留。对我来说，能够说明为什么暂时不能下结论，也是学习成果。
+我对它的兴趣更多地落在“能否观察到状态变化”上，而不是把波动包装成一个全面、精确的识别结果。这也是我选择把项目作为技术学习和个人见解记录的原因。
 
-实测后，我认为位置和朝向对当前输出的影响，使其难以直接识别动作大小或远近来源。我把本项目定位为条件明确的变化观察；主动激励振动损伤检测另列为待验证设想。完整反馈见[实测反思](../notes/2026-10-14-field-reflection.md)。
+## 为什么这轮是探索，而不是分类验证
+
+我在九组采集过程中改变过位置或朝向。因此，这次尝试发现了值得关注的现象，却没有隔离动作幅度、位置、方向和观察时长的作用。
+
+这既不能证明大小动作已经可以稳定分类，也不能证明 CSI 在所有配置下都无法分类。它支持我对当前装置的谨慎判断：不能把这些因素混在一起后，再只根据输出大小解释物理动作。[曲线与记录](../reports/motion-pilot-2026-10-13/report.md)保留页面提示，并明确它们不是受控标签。
+
+## 从运动观察延伸出的振动设想
+
+我的损伤检测设想是动态的：先让物体产生小幅、可重复的振动，再观察不同部位的响应，尝试与健康状态比较，寻找异常变化。
+
+我想了解的是物体的振动特征，而不是只看接收到的 Wi-Fi 频率。频率与幅度要分别测量、标定；不同部位的响应也需要办法区分。现有系统还没有做到这些，所以我把它作为可能的应用方向保留，而不是本项目的已验证成果。[详细设想与依据](../notes/2026-10-14-field-reflection.md)。
 
 ## English
 
-### Why I am learning CSI
+### The question I started with
 
-What interests me is how a system designed for communication can also help us sense its surroundings. Looking at transmission, propagation, and reception together helps me understand the relationship between wireless communication and the environment. This is the central perspective I want to present.
+I wanted to understand how movement in a space containing a transmitter and receiver appears in received data, and whether large and small movements produce distinguishable responses. A count of received records was not enough: it establishes a working link, but does not explain what the data means.
 
-### How I understand motion detection
+I separated CSI from the camera workflow and used standalone ESP32-S3 firmware to observe continuous data. The 10-, 20- and 30-second windows gave me opportunities to observe changes. During the trials, I also changed location and receiver orientation and tried sound and ambient noise.
 
-I separate three steps: receiving data, observing a change, and using controlled comparisons to assess whether the change is related to motion. Receiving CSI alone does not establish object detection. Packet loss, device placement, and background changes need consideration when interpreting the observations.
+### Observations that shaped my judgment
 
-I would initially describe a result as “a change consistent with motion.” A candidate motion decision under specific conditions needs support from repeated experiments. Object identity, precise position, and the presence of a completely stationary object are beyond what this simple experiment can directly establish.
+Responses near the transmitter were noticeably smaller than those near the receiver, and the front of the receiver produced a stronger response than the rear. Sound and the ambient noise I tried had little obvious effect.
 
-### Why I focus on the receiver
+What matters to me is that the displayed value does not depend on the action alone. A larger fluctuation does not directly establish a larger movement. Observing different responses at known near/far positions is also different from being able to infer an unknown position from a signal.
 
-The transmitter supplies traffic, while the receiver is my entry point for understanding the data. I want to explain where the data comes from, how I record and compare it, and when a conclusion is premature. This scope gives me a foundation for understanding more complex systems later.
+I distinguish “no obvious effect from the sounds I tried” from “environmental interference does not affect CSI.” Only the first describes my observation.
 
-### How I express my perspective
+### My current position
 
-Each note separates my initial understanding, actual observations, interpretation, and remaining questions. Unexpected results also deserve a place in the record. Being able to explain why a conclusion is not yet justified is part of learning.
+I see some feasibility for observing motion, vibration or changes of state in defined objects and settings. In a space with many interacting factors, however, this setup does not establish detailed, accurate identification of position, movement magnitude and multiple other characteristics at once.
 
-My experiments highlight position and orientation as confounding factors. I treat this setup as a way to observe changes under defined conditions, while vibration-based damage sensing remains a separate hypothesis. See [field reflections](../notes/2026-10-14-field-reflection.md).
+My interest is in whether a change can be observed, rather than presenting fluctuations as comprehensive recognition. This is why I keep the project focused on learning and personal interpretation.
+
+### Exploration rather than classification validation
+
+I changed position or orientation during the nine trials. The exploration revealed useful observations but did not isolate movement magnitude, location, direction or observation duration.
+
+It neither proves stable small/large classification nor establishes that every CSI configuration is incapable of it. It supports a cautious interpretation of this setup: mixed influences cannot be reduced to a direct physical-action label. The [recorded plots](../reports/motion-pilot-2026-10-13/report.md) preserve interface prompts while identifying them as uncontrolled labels.
+
+### A vibration idea arising from the exploration
+
+My damage-detection idea is dynamic: induce a repeatable small vibration, observe responses at different parts of the object and compare with a healthy reference to look for abnormal changes.
+
+The target is mechanical vibration characteristics, not simply received Wi-Fi frequencies. Frequency and amplitude need separate measurement and calibration, and responses from different parts must be distinguishable. This system has not demonstrated those steps, so the idea remains a possible application rather than an achieved result. See the [detailed hypothesis and references](../notes/2026-10-14-field-reflection.md).
