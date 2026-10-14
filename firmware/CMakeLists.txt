@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.5)
+set(PROJECT_VER "standalone-0.1.0")
+set(COMPONENTS main cmake_utilities)
+file(GLOB local_managed_components LIST_DIRECTORIES true "${CMAKE_CURRENT_SOURCE_DIR}/managed_components/*")
+set(EXTRA_COMPONENT_DIRS ${local_managed_components})
+include($ENV{IDF_PATH}/tools/cmake/project.cmake)
+project(wifi-csi-standalone)

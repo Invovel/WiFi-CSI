@@ -1,5 +1,7 @@
 # WiFi-CSI
 
+[Full workflow: standalone firmware and movement comparison](docs/workflow-plan.md) (firmware deployed; controlled protocol not fully executed).
+
 **Receiver-focused learning notes and personal reflections on Wi-Fi CSI.**
 
 [中文](README.md) | English
@@ -48,11 +50,15 @@ All linked notes contain Chinese and English versions.
 
 ## Current status
 
-2026-10-13: the bilingual documentation structure is in place. No hardware experiment has been conducted for this new framework, and this repository does not contain new flashable firmware.
+2026-10-14: standalone-0.1.0 was built, flashed and checked for 10/20/30 seconds with no Vision waits. Nine prompted trials were recorded, but position/orientation changed during them. They are exploratory observations, not evidence of controlled small/large classification accuracy.
+
+Read [my field observations and interpretation](notes/2026-10-14-field-reflection.md): stronger responses near the receiver and at its front, and no obvious effect from the tested sounds. These qualitative observations concern this setup, not universal rules. [Plots and statistics](reports/motion-pilot-2026-10-13/report.md) show the data and label limitations. Damage sensing through controlled mechanical excitation remains an untested hypothesis.
+
+[Firmware and reproducibility limits](firmware/README.md) · [Deployment verification](notes/2026-10-14-deployment.md)
 
 A historical record dated 2026-09-30 reports successful Wi-Fi connection, router Ping/CSI basic sampling, and a manual Fake-trigger entry point. Reliable real-motion detection was not verified. The 216 records over 18 seconds were application-level diagnostic messages, not a measured raw CSI sampling rate or detection accuracy.
 
-This learning topic has been separated from the earlier CSI-to-camera workflow. Camera recognition, UART event handoff, pan-tilt control, and the desktop assistant are outside its learning goals. Existing firmware and historical projects remain unchanged.
+This learning topic has been separated from the earlier CSI-to-camera workflow. Camera recognition, UART event handoff, pan-tilt control, and the desktop assistant are outside its learning goals. Historical source is preserved; COM4 now runs the standalone firmware.
 
 ## References
 

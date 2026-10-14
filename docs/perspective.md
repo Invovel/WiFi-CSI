@@ -22,7 +22,7 @@
 
 每篇记录都区分：我原先的理解、实际观察、我对现象的解释、尚未回答的问题。出现不符合预期的结果也值得保留。对我来说，能够说明为什么暂时不能下结论，也是学习成果。
 
-这些是根据本项目学习定位整理的初稿；具体实验感受需在实际操作后补充。
+实测后，我认为位置和朝向对当前输出的影响，使其难以直接识别动作大小或远近来源。我把本项目定位为条件明确的变化观察；主动激励振动损伤检测另列为待验证设想。完整反馈见[实测反思](../notes/2026-10-14-field-reflection.md)。
 
 ## English
 
@@ -44,4 +44,4 @@ The transmitter supplies traffic, while the receiver is my entry point for under
 
 Each note separates my initial understanding, actual observations, interpretation, and remaining questions. Unexpected results also deserve a place in the record. Being able to explain why a conclusion is not yet justified is part of learning.
 
-This is an initial draft based on the project's learning focus; reflections on hands-on work will be added after experiments.
+My experiments highlight position and orientation as confounding factors. I treat this setup as a way to observe changes under defined conditions, while vibration-based damage sensing remains a separate hypothesis. See [field reflections](../notes/2026-10-14-field-reflection.md).

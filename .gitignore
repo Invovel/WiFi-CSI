@@ -10,3 +10,15 @@ private_wifi_credentials.h
 data/raw/
 .DS_Store
 Thumbs.db
+
+# Local tools, private acquisition and firmware build inputs
+.vscode/
+firmware/sdkconfig*
+firmware/managed_components/
+firmware/components/
+firmware/dependencies.lock
+firmware/build*/
+.local/
+
+__pycache__/
+*.pyc

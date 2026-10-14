@@ -1,5 +1,8 @@
 # 收发框架 / System framework
 
+> 2026-10-14 状态更新：独立固件已部署；九组记录因位置/朝向在过程中变化，归为多因素探索。下文是原始计划或历史状态，受控重复实验及干扰开关矩阵未完成。最新事实见[实测反思](../notes/2026-10-14-field-reflection.md)和[部署记录](../notes/2026-10-14-deployment.md)。
+> Update: standalone firmware deployed; the nine trials are confounded by position/orientation changes. The text below retains the original plan or historical status. Controlled repetitions and interference matrices are not completed. See the linked current records.
+
 [中文首页](../README.md) · [English home](../README.en.md)
 
 ## 中文
